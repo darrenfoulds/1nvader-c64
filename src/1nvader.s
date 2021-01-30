@@ -49,7 +49,6 @@ sprmem4  = $32c0
 
          lda #0
          sta $d020  ; border colour
-         lda #0
          sta $d021  ; screen colour
 
          lda #1
