@@ -44,8 +44,7 @@ sprmem4  = $32c0
 
 ;-- setup ------------------------------
 
-         lda #147
-         jsr $ffd2  ; clear screen
+         jsr clscrn ; clear screen
 
          lda #0
          sta $d020  ; border colour
@@ -253,6 +252,18 @@ drwmtse  sta mountcm,x
          cpx #225
          bne drwmtse
 
+         rts
+
+;-- clscrn ------------------------------
+clscrn   lda #$20   ; space
+         ldx #$00
+screen_loop
+         sta $0400,x
+         sta $0500,x
+         sta $0700,x
+         sta $07e8,x
+         inx
+         bne screen_loop
          rts
 
 tistripe          ; striped title colour
